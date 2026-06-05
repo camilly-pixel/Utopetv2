@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Check, X, MapPin, TrendingUp, Star, Heart, Clock,
-  ChevronRight, AlertCircle, Menu, XIcon
+  ChevronRight, AlertCircle, Menu
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
@@ -23,8 +23,12 @@ function useLeadForm(source: string) {
     e.preventDefault();
     if (!form.name || !form.clinic || !form.contact) return;
     setStatus('loading');
-    const { error } = await supabase.from('utopet_leads').insert({ ...form, source });
-    setStatus(error ? 'error' : 'success');
+    try {
+      const { error } = await supabase.from('utopet_leads').insert({ ...form, source });
+      setStatus(error ? 'error' : 'success');
+    } catch {
+      setStatus('error');
+    }
   };
 
   return { form, set, submit, status };
@@ -84,7 +88,7 @@ function Navbar() {
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
-          {open ? <XIcon size={22} /> : <Menu size={22} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
