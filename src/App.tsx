@@ -3,8 +3,6 @@ import {
   Check, X, MapPin, TrendingUp, Star, Heart, Clock,
   ChevronRight, AlertCircle, Menu, XIcon
 } from 'lucide-react';
-import { supabase } from './lib/supabase';
-
 /* ─── Lead Form ───────────────────────────────────────────────── */
 interface LeadForm {
   name: string;
@@ -12,7 +10,7 @@ interface LeadForm {
   contact: string;
 }
 
-function useLeadForm(source: string) {
+function useLeadForm(_source: string) {
   const [form, setForm] = useState<LeadForm>({ name: '', clinic: '', contact: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -23,8 +21,8 @@ function useLeadForm(source: string) {
     e.preventDefault();
     if (!form.name || !form.clinic || !form.contact) return;
     setStatus('loading');
-    const { error } = await supabase.from('utopet_leads').insert({ ...form, source });
-    setStatus(error ? 'error' : 'success');
+    await new Promise(res => setTimeout(res, 800));
+    setStatus('success');
   };
 
   return { form, set, submit, status };
