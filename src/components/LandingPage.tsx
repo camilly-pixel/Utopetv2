@@ -1,11 +1,117 @@
-import { useState, useEffect, useRef, FormEvent } from 'react';
+import { useState, useEffect, useRef, createContext, useContext, FormEvent } from 'react';
 import { PANELS, FAQ } from '../data';
 import { LogoSvg, CheckIcon, ChevronDown, PlusIcon } from './Icons';
 import { supabase } from '../lib/supabase';
 
+const ModalContext = createContext<{ open: () => void }>({ open: () => {} });
+
+const REFERRAL_OPTIONS = [
+  'Instagram',
+  'Google',
+  'Indicacao de colega',
+  'Evento / feira',
+  'LinkedIn',
+  'Outro',
+];
+
+function LeadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [clinicName, setClinicName] = useState('');
+  const [referral, setReferral] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await supabase.from('utopet_leads').insert([{
+        name: fullName,
+        contact: phone,
+        clinic: clinicName,
+        source: referral,
+      }]);
+    } catch {
+      // silent
+    }
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  const handleClose = () => {
+    onClose();
+    setTimeout(() => {
+      setSubmitted(false);
+      setFullName('');
+      setPhone('');
+      setClinicName('');
+      setReferral('');
+    }, 300);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={handleClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={handleClose} aria-label="Fechar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+        </button>
+
+        {!submitted ? (
+          <>
+            <div className="modal-header">
+              <span className="logo" style={{ fontSize: '22px', color: 'var(--preto)' }}><LogoSvg />topet</span>
+              <h3 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(22px,3vw,28px)', marginTop: '16px' }}>Agende sua demonstracao</h3>
+              <p style={{ color: 'var(--cinza)', fontSize: '15px', marginTop: '8px' }}>Preencha os dados abaixo e nossa equipe entra em contato.</p>
+            </div>
+            <form className="modal-form" onSubmit={handleSubmit}>
+              <div className="form-field">
+                <label htmlFor="fullName">Nome completo</label>
+                <input id="fullName" type="text" placeholder="Seu nome completo" required value={fullName} onChange={(e) => setFullName(e.target.value)} />
+              </div>
+              <div className="form-field">
+                <label htmlFor="phone">Numero</label>
+                <input id="phone" type="tel" placeholder="(00) 00000-0000" required value={phone} onChange={(e) => setPhone(e.target.value)} />
+              </div>
+              <div className="form-field">
+                <label htmlFor="clinic">Nome da Clinica</label>
+                <input id="clinic" type="text" placeholder="Nome da sua clinica" required value={clinicName} onChange={(e) => setClinicName(e.target.value)} />
+              </div>
+              <div className="form-field">
+                <label htmlFor="referral">Por onde nos conheceu?</label>
+                <select id="referral" required value={referral} onChange={(e) => setReferral(e.target.value)}>
+                  <option value="" disabled>Selecione uma opcao</option>
+                  {REFERRAL_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <button type="submit" className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }} disabled={loading}>
+                {loading ? 'Enviando...' : 'Agendar demonstracao'}
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className="modal-success">
+            <div className="modal-success-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--roxo)" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M8 12l3 3 5-5" /></svg>
+            </div>
+            <h3 style={{ fontFamily: 'var(--display)', fontSize: '24px', marginTop: '16px' }}>Recebemos seu contato!</h3>
+            <p style={{ color: 'var(--cinza)', fontSize: '15px', marginTop: '10px' }}>Em breve a equipe Utopet fala com voce.</p>
+            <button className="btn btn-roxo" style={{ marginTop: '24px' }} onClick={handleClose}>Fechar</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { open } = useContext(ModalContext);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -26,7 +132,7 @@ function Header() {
             <a href="#exames" onClick={() => setMenuOpen(false)}>O exame</a>
             <a href="#roi" onClick={() => setMenuOpen(false)}>Caso de negocio</a>
             <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
-            <a href="#contato" className="btn btn-light" style={{ padding: '11px 22px' }} onClick={() => setMenuOpen(false)}>Agendar demonstracao</a>
+            <button className="btn btn-light" style={{ padding: '11px 22px' }} onClick={() => { setMenuOpen(false); open(); }}>Agendar demonstracao</button>
           </div>
           <button className="menu-btn" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
@@ -38,6 +144,8 @@ function Header() {
 }
 
 function Hero() {
+  const { open } = useContext(ModalContext);
+
   return (
     <section className="hero">
       <div className="hero-glow g1"></div>
@@ -49,7 +157,7 @@ function Hero() {
             <h1 style={{ marginTop: '18px' }}>Eleve a medicina preventiva da sua clinica — <span className="hl">e o seu faturamento.</span></h1>
             <p className="lead">A Utopet faz uma triagem de bem-estar de 139 parametros em 17 sistemas, nao invasiva e em minutos. E apoio a decisao clinica que vira um novo servico de alto valor percebido, com recorrencia e fidelizacao do tutor.</p>
             <div className="hero-cta">
-              <a href="#contato" className="btn btn-roxo">Agendar demonstracao</a>
+              <button className="btn btn-roxo" onClick={open}>Agendar demonstracao</button>
               <a href="#roi" className="btn btn-ghost">Ver o caso de negocio</a>
             </div>
             <p className="hero-note">O veterinario sempre no comando · Treinamento da equipe incluso · Comodato e parcelamento disponiveis</p>
@@ -546,6 +654,8 @@ function Testimonial() {
 }
 
 function Models() {
+  const { open } = useContext(ModalContext);
+
   return (
     <section className="pad" id="modelos">
       <div className="wrap">
@@ -563,7 +673,7 @@ function Models() {
               <li><CheckIcon />Software incluso</li>
               <li><CheckIcon />Ideal para validar a demanda</li>
             </ul>
-            <a href="#contato" className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }}>Quero saber mais</a>
+            <button className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }} onClick={open}>Quero saber mais</button>
           </div>
           <div className="model feat reveal">
             <span className="tag">Mais escolhido</span>
@@ -574,7 +684,7 @@ function Models() {
               <li><CheckIcon />Parcelamento facilitado</li>
               <li><CheckIcon />Software + suporte + treinamento</li>
             </ul>
-            <a href="#contato" className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }}>Pedir proposta</a>
+            <button className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }} onClick={open}>Pedir proposta</button>
           </div>
           <div className="model reveal">
             <h3>Rede / grupo</h3>
@@ -584,7 +694,7 @@ function Models() {
               <li><CheckIcon />Painel multi-unidade</li>
               <li><CheckIcon />Onboarding dedicado</li>
             </ul>
-            <a href="#contato" className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }}>Falar com vendas</a>
+            <button className="btn btn-roxo" style={{ width: '100%', justifyContent: 'center' }} onClick={open}>Falar com vendas</button>
           </div>
         </div>
       </div>
@@ -621,19 +731,7 @@ function FaqSection() {
 }
 
 function FinalCTA() {
-  const [submitted, setSubmitted] = useState(false);
-  const [clinicName, setClinicName] = useState('');
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      await supabase.from('utopet_leads').insert([{ clinic_name: clinicName, email }]);
-    } catch {
-      // silent fail
-    }
-    setSubmitted(true);
-  };
+  const { open } = useContext(ModalContext);
 
   return (
     <section className="pad" id="contato">
@@ -643,15 +741,7 @@ function FinalCTA() {
           <div style={{ position: 'relative' }}>
             <h2>Pronta para colocar a Utopet na sua clinica?</h2>
             <p>Agende uma demonstracao sem compromisso. Mostramos o aparelho, o software e os numeros do modelo de negocio na pratica.</p>
-            {!submitted ? (
-              <form className="cta-form" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Nome da clinica" required value={clinicName} onChange={(e) => setClinicName(e.target.value)} />
-                <input type="email" placeholder="Seu melhor e-mail" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                <button type="submit" className="btn btn-light">Agendar demonstracao</button>
-              </form>
-            ) : (
-              <p style={{ marginTop: '22px', color: 'var(--lilas)', fontWeight: 600 }}>Recebemos seu contato — em breve a equipe Utopet fala com voce.</p>
-            )}
+            <button className="btn btn-light" style={{ marginTop: '34px' }} onClick={open}>Agendar demonstracao</button>
           </div>
         </div>
       </div>
@@ -700,6 +790,8 @@ function Footer() {
 }
 
 export default function LandingPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -720,7 +812,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <>
+    <ModalContext.Provider value={{ open: () => setModalOpen(true) }}>
       <Header />
       <Hero />
       <Stats />
@@ -739,6 +831,7 @@ export default function LandingPage() {
       <FaqSection />
       <FinalCTA />
       <Footer />
-    </>
+      <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    </ModalContext.Provider>
   );
 }
