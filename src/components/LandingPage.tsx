@@ -122,7 +122,7 @@ function WhatIs() {
       <div className="wrap">
         <div className="whatis-grid">
           <div className="whatis-photo reveal">
-            <img src="https://images.pexels.com/photos/6235233/pexels-photo-6235233.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Aparelho Utopet" />
+            <img src="/images/utopet-aparelho.jpg" alt="Aparelho Utopet" />
           </div>
           <div className="reveal">
             <span className="eyebrow">Em 1 minuto</span>
@@ -157,6 +157,7 @@ function WhatIs() {
 function Emotional() {
   return (
     <section className="emo">
+      <img className="emo-media" src="/images/emo-poster.jpg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.5 }} />
       <div className="emo-shade"></div>
       <div className="wrap">
         <h2 className="reveal">Eles nao falam. <span className="hl">Mas sentem.</span></h2>
@@ -411,6 +412,7 @@ function Pets() {
         </div>
 
         <div className="pet-banner reveal">
+          <img src="/images/pet-banner-poster.jpg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(11,11,16,.9) 0%,rgba(11,11,16,.55) 55%,rgba(11,11,16,.25) 100%)', zIndex: 1 }}></div>
           <div className="pb-text">
             <span className="eyebrow" style={{ color: 'var(--lilas)' }}>Estilos de vida diferentes</span>
@@ -421,17 +423,17 @@ function Pets() {
 
         <div className="petcards">
           <div className="petcard reveal">
-            <img className="ph" src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cao de grande porte" />
+            <img className="ph" src="/images/cao-grande.jpg" alt="Cao de grande porte" />
             <div className="ov"></div>
             <div className="ct"><div className="k">Para caes de grande porte</div><h3>Dos gigantes gentis</h3><p>Labradores, pastores, golden — leitura ajustada ao metabolismo de racas grandes.</p></div>
           </div>
           <div className="petcard reveal">
-            <img className="ph" src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cao de pequeno porte" />
+            <img className="ph" src="/images/cao-pequeno.jpg" alt="Cao de pequeno porte" />
             <div className="ov"></div>
             <div className="ct"><div className="k">Para pequenas lendas</div><h3>Aos pequenos notaveis</h3><p>Spitz, shih-tzu, dachshund e vira-latas pequenos — sem perder nenhum detalhe.</p></div>
           </div>
           <div className="petcard reveal">
-            <img className="ph" src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gato" />
+            <img className="ph" src="/images/gato.jpg" alt="Gato" />
             <div className="ov"></div>
             <div className="ct"><div className="k">Para gatos curiosos</div><h3>A todos os felinos</h3><p>Persas, siameses, SRD — leitura especifica para o organismo dos gatos.</p></div>
           </div>
