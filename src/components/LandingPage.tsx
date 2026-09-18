@@ -750,6 +750,8 @@ function FinalCTA() {
 }
 
 function Footer() {
+  const { open } = useContext(ModalContext);
+
   return (
     <footer>
       <div className="wrap">
@@ -770,13 +772,13 @@ function Footer() {
               <h4>Clínica</h4>
               <a href="#beneficios">Benefícios</a>
               <a href="#faq">Dúvidas</a>
-              <a href="#contato">Agendar demo</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); open(); }}>Agendar demo</a>
             </div>
             <div className="foot-col">
               <h4>Contato</h4>
-              <a href="#">utopet.co</a>
-              <a href="#">@utopet</a>
-              <a href="#">comercial@utopet.co</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); open(); }}>utopet.co</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); open(); }}>@utopet</a>
+              <a href="mailto:contato@utopet.com.br">contato@utopet.com.br</a>
             </div>
           </div>
         </div>
