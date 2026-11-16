@@ -1,11 +1,9 @@
-import { FormEvent, ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { Check, X, Plus, Menu } from 'lucide-react';
 import { LogoSvg } from './Icons';
-import { supabase } from '../lib/supabase';
 
 export type PageKind = 'veterinario' | 'tutor';
 
-const REFERRAL_OPTIONS = ['Instagram', 'Google', 'Indicação de colega', 'Evento / feira', 'LinkedIn', 'Outro'];
 
 export function Header({ kind, onContact }: { kind: PageKind; onContact: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,76 +35,6 @@ export function Header({ kind, onContact }: { kind: PageKind; onContact: () => v
         </nav>
       </div>
     </header>
-  );
-}
-
-export function LeadModal({ isOpen, onClose, kind }: { isOpen: boolean; onClose: () => void; kind: PageKind }) {
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [clinicName, setClinicName] = useState('');
-  const [referral, setReferral] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-    setError('');
-    const { error: insertError } = await supabase.from('utopet_leads').insert([{
-      name: fullName,
-      contact: phone,
-      clinic: clinicName,
-      source: referral,
-    }]);
-    setLoading(false);
-    if (insertError) {
-      setError('Não foi possível enviar agora. Tente novamente em instantes.');
-      return;
-    }
-    setSubmitted(true);
-  };
-
-  const handleClose = () => {
-    onClose();
-    window.setTimeout(() => {
-      setSubmitted(false);
-      setFullName('');
-      setPhone('');
-      setClinicName('');
-      setReferral('');
-      setError('');
-    }, 300);
-  };
-
-  if (!isOpen) return null;
-  const isVet = kind === 'veterinario';
-
-  return (
-    <div className="modal-overlay" onClick={handleClose} role="presentation">
-      <div className="modal-content" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <button className="modal-close" onClick={handleClose} aria-label="Fechar"><X size={22} /></button>
-        {!submitted ? (
-          <>
-            <div className="modal-header">
-              <span className="logo"><LogoSvg />topet</span>
-              <h3 id="modal-title" style={{ fontSize: '28px', marginTop: '18px' }}>{isVet ? 'Agende sua demonstração' : 'Garanta sua vaga'}</h3>
-              <p style={{ color: 'var(--texto-2)', fontSize: '15px', marginTop: '8px' }}>{isVet ? 'Preencha os dados abaixo e nossa equipe entra em contato.' : 'Preencha seus dados e nossa equipe confirma os próximos passos.'}</p>
-            </div>
-            <form className="modal-form" onSubmit={handleSubmit}>
-              <div className="form-field"><label htmlFor="fullName">Nome completo</label><input id="fullName" type="text" placeholder="Seu nome completo" required value={fullName} onChange={(event) => setFullName(event.target.value)} /></div>
-              <div className="form-field"><label htmlFor="phone">Número</label><input id="phone" type="tel" placeholder="(00) 00000-0000" required value={phone} onChange={(event) => setPhone(event.target.value)} /></div>
-              <div className="form-field"><label htmlFor="clinic">{isVet ? 'Nome da clínica' : 'Nome do pet'}</label><input id="clinic" type="text" placeholder={isVet ? 'Nome da sua clínica' : 'Nome do seu pet'} required value={clinicName} onChange={(event) => setClinicName(event.target.value)} /></div>
-              <div className="form-field"><label htmlFor="referral">Por onde nos conheceu?</label><select id="referral" required value={referral} onChange={(event) => setReferral(event.target.value)}><option value="" disabled>Selecione uma opção</option>{REFERRAL_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}</select></div>
-              {error && <p role="alert" style={{ color: '#b42318', fontSize: '14px' }}>{error}</p>}
-              <button type="submit" className="btn btn-roxo" style={{ width: '100%' }} disabled={loading}>{loading ? 'Enviando...' : isVet ? 'Agendar demonstração' : 'Garantir minha vaga'}</button>
-            </form>
-          </>
-        ) : (
-          <div className="modal-success"><div className="modal-success-icon"><Check size={48} color="var(--roxo)" /></div><h3 style={{ fontSize: '25px', marginTop: '16px' }}>Recebemos seu contato!</h3><p style={{ color: 'var(--texto-2)', fontSize: '15px', marginTop: '10px' }}>Em breve a equipe Utopet fala com você.</p><button className="btn btn-roxo" style={{ marginTop: '24px' }} onClick={handleClose}>Fechar</button></div>
-        )}
-      </div>
-    </div>
   );
 }
 

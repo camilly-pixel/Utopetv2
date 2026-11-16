@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
-import { Header, LeadModal, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
+import { Header, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
+import { LeadModal } from '../components/LeadModal';
 
 const tutorTabs = [
   { label: 'Passo 1', heading: 'Seu pet fica com você', description: 'Ele só precisa ficar em contato com o aparelho, acordado e no seu colo se preferir.', chips: ['Sem agulha', 'Sem jejum', 'Sem sedação'] },

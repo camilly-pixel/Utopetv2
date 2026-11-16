@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check, X } from 'lucide-react';
-import { Header, LeadModal, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
+import { Header, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
+import { LeadModal } from '../components/LeadModal';
 
 const vetTabs = [
   { label: 'Antes', heading: 'Pré-triagem padronizada', description: 'Perguntas simples sobre rotina, alimentação e sinais recentes, que a recepção aplica antes de o pet entrar no consultório.', chips: ['Roteiro pronto', 'Recepção aplica', 'Histórico do pet'] },
