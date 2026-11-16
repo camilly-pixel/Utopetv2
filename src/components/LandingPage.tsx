@@ -26,12 +26,16 @@ function LeadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
     e.preventDefault();
     setLoading(true);
     try {
-      await supabase.from('utopet_leads').insert([{
+      const { error: insertError } = await supabase.from('utopet_leads').insert([{
         name: fullName,
         contact: phone,
         clinic: clinicName,
         source: referral,
       }]);
+      if (!insertError) {
+        const contentName = window.location.pathname.startsWith('/tutor') ? 'tutor' : 'veterinario';
+        window.fbq?.('track', 'Lead', { content_name: contentName }, { eventID: crypto.randomUUID() });
+      }
     } catch {
       // silent
     }

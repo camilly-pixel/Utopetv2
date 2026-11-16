@@ -85,6 +85,7 @@ export function LeadModal({ isOpen, onClose, kind }: { isOpen: boolean; onClose:
       setError('Não foi possível enviar agora. Tente novamente em instantes.');
       return;
     }
+    window.fbq?.('track', 'Lead', { content_name: kind }, { eventID: crypto.randomUUID() });
     setSubmitted(true);
   };
 
