@@ -9,7 +9,7 @@ export function Header({ kind, onContact }: { kind: PageKind; onContact: () => v
   const [menuOpen, setMenuOpen] = useState(false);
   const links = kind === 'veterinario'
     ? [['Como funciona', 'como-funciona'], ['Hoje e depois', 'hoje-e-depois'], ['Simulador', 'simulador'], ['Oferta', 'oferta']]
-    : [['Como funciona', 'como-funciona'], ['O que você recebe', 'recebe'], ['Valores', 'oferta'], ['Dúvidas', 'duvidas']];
+    : [['Como funciona', 'como-funciona'], ['O que você leva', 'recebe'], ['Valores', 'oferta'], ['Dúvidas', 'duvidas']];
 
   const goTo = (id: string) => {
     setMenuOpen(false);
@@ -70,9 +70,9 @@ export function DeviceSection({ kind }: { kind: PageKind }) {
   );
 }
 
-export function GallerySection({ kind }: { kind: PageKind }) {
+export function GallerySection({ kind, children }: { kind: PageKind; children?: ReactNode }) {
   const isVet = kind === 'veterinario';
-  return <section className="pad"><div className="wrap"><div className="sec-head center"><span className="eyebrow">Cães e gatos</span><h2>{isVet ? 'Cães e gatos, do filhote ao sênior' : 'Cada ano ao lado dele conta'}</h2><p>{isVet ? 'O software ajusta a leitura conforme espécie, porte e idade do paciente.' : 'Filhote agitado ou sênior tranquilo, cão ou gato. Entender como ele está hoje ajuda a cuidar melhor dos próximos anos.'}</p></div><div className="galeria"><div className="foto"><img src="/images/cao-grande.jpg" alt="Cão de grande porte" /></div><div className="foto"><img src="/images/cao-pequeno.jpg" alt="Cão de pequeno porte" /></div><div className="foto"><img src="/images/gato.jpg" alt="Gato" /></div></div></div></section>;
+  return <section className="pad"><div className="wrap"><div className="sec-head center"><span className="eyebrow">Cães e gatos</span><h2>{isVet ? 'Cães e gatos, do filhote ao sênior' : 'Para cada fase da vida dele'}</h2><p>{isVet ? 'O software ajusta a leitura conforme espécie, porte e idade do paciente.' : 'Filhote agitado ou sênior tranquilo, cão ou gato. Entender como ele está hoje ajuda a cuidar melhor dos próximos anos.'}</p></div><div className="galeria"><div className="foto"><img src="/images/cao-grande.jpg" alt="Cão de grande porte" /></div><div className="foto"><img src="/images/cao-pequeno.jpg" alt="Cão de pequeno porte" /></div><div className="foto"><img src="/images/gato.jpg" alt="Gato" /></div></div>{children}</div></section>;
 }
 
 export function ReportExample({ kind }: { kind: PageKind }) {
@@ -88,7 +88,7 @@ export function FaqSection({ items, title, id }: { items: Array<[string, string]
 
 export function FinalCTA({ kind, onContact }: { kind: PageKind; onContact: () => void }) {
   const isVet = kind === 'veterinario';
-  return <section className="pad"><div className="wrap"><div className="fecho"><div className="glow" /><h2>{isVet ? 'Veja funcionando com um paciente seu.' : 'Mais tempo bom com quem você ama.'}</h2><p>{isVet ? 'Agende uma demonstração. Mostramos o aparelho, o relatório e a simulação da sua clínica.' : 'Garanta uma das 50 vagas deste ano em Bragança Paulista. R$ 150 por pet.'}</p><button className="btn btn-branco" onClick={onContact}>{isVet ? 'Agendar demonstração' : 'Garantir minha vaga'}</button></div></div></section>;
+  return <section className="pad"><div className="wrap"><div className="fecho"><div className="glow" /><h2>{isVet ? 'Veja funcionando com um paciente seu.' : 'Mais tempo bom com quem você ama.'}</h2><p>{isVet ? 'Agende uma demonstração. Mostramos o aparelho, o relatório e a simulação da sua clínica.' : 'Garanta uma das 50 vagas deste ano em Bragança Paulista.'}</p><button className="btn btn-branco" onClick={onContact}>{isVet ? 'Agendar demonstração' : 'Garantir minha vaga'}</button></div></div></section>;
 }
 
 export function Footer() {

@@ -529,6 +529,49 @@ header.topo {
   pointer-events: none;
 }
 
+/* ---------- Tutor ---------- */
+.numeros-texto .numero .n { font-size: clamp(28px, 3vw, 38px); }
+.situacoes-card { padding: 44px 40px; }
+.situacoes-card h3 { font-size: clamp(22px, 2.4vw, 28px); margin-bottom: 28px; text-align: center; }
+.situacoes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.situacoes li { display: flex; align-items: center; gap: 14px; background: var(--bg); border: 1px solid var(--borda); border-radius: 24px; padding: 18px 20px; font-size: 16px; font-weight: 500; line-height: 1.4; transition: transform 0.25s ease, border-color 0.25s ease; }
+.situacoes li:hover { transform: translateY(-3px); border-color: var(--roxo); }
+.situacoes li .ic, .itens-icone .ic { width: 42px; height: 42px; border-radius: 50%; background: var(--roxo); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.situacoes li:last-child { background: var(--lavanda); border-color: transparent; }
+.nota-triagem { max-width: 680px; margin: 32px auto 0; text-align: center; font-size: 16px; color: var(--texto-2); line-height: 1.6; }
+.leva-card { display: flex; flex-direction: column; }
+.leva-card h3 { margin-top: 0; }
+.cartao-grande ul.itens-icone { gap: 16px; margin-top: 28px; }
+.cartao-grande ul.itens-icone li { align-items: center; gap: 16px; background: rgba(255, 255, 255, 0.6); border-radius: 22px; padding: 14px 18px; font-weight: 400; line-height: 1.45; }
+.cartao-grande ul.itens-icone li svg { color: #fff; margin-top: 0; }
+.itens-icone b { font-weight: 700; }
+.fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+.fase { padding: 26px 28px; border-radius: 28px; }
+.fase h3 { font-size: 21px; color: var(--roxo); }
+.fase p { margin-top: 6px; font-size: 15.5px; color: var(--texto-2); }
+.comando-card { display: flex; gap: 24px; align-items: flex-start; max-width: 900px; margin: 0 auto; }
+.comando-card h3 { margin-top: 0; }
+.comando-card p { color: var(--texto-2); font-size: 16.5px; margin-top: 12px; line-height: 1.6; }
+.comando-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--roxo); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.preco-card { max-width: 480px; margin: 0 auto; padding: 44px 40px; text-align: center; border: 2px solid var(--roxo); box-shadow: 0 30px 80px -40px rgba(106, 53, 255, 0.55); }
+.preco-valor { font-size: clamp(44px, 6vw, 64px); font-weight: 700; letter-spacing: -0.03em; color: var(--roxo); line-height: 1.1; }
+.preco-valor span { font-size: 18px; color: var(--texto-2); letter-spacing: 0; font-weight: 500; }
+.preco-card ul { list-style: none; margin: 28px 0 32px; display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.preco-card li { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; }
+.preco-card li .ic { width: 28px; height: 28px; border-radius: 50%; background: var(--lavanda); color: var(--roxo); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.preco-card .btn { width: 100%; }
+@media (max-width: 900px) { .situacoes { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .numeros-texto .numeros { gap: 16px; }
+  .fases { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .situacoes-card, .preco-card { padding: 30px 22px; border-radius: 28px; }
+  .situacoes { grid-template-columns: 1fr; gap: 12px; }
+  .comando-card { flex-direction: column; gap: 18px; }
+  .dois-cartoes { gap: 20px; }
+}
+
 /* ---------- Footer ---------- */
 footer.rodape { padding: 40px 0 36px; }
 .rodape-card { background: var(--escuro); border-radius: 40px; padding: 48px 56px 36px; color: rgba(255, 255, 255, 0.7); }

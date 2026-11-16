@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
-import { Header, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
+import { Check, Footprints, Hand, Utensils, Moon, Hourglass, Heart, Home, Eye, Stethoscope } from 'lucide-react';
+import { Header, Numbers, TabSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
 import { LeadModal } from '../components/LeadModal';
 
 const tutorTabs = [
@@ -17,6 +17,30 @@ const tutorFaq: Array<[string, string]> = [
   ['As mudanças de rotina substituem o veterinário?', 'Não. São sugestões de dia a dia para você confirmar com ele. Quem avalia e decide o tratamento é o veterinário.'],
 ];
 
+const situacoes = [
+  { icon: Footprints, text: 'Anda mais quietinho' },
+  { icon: Hand, text: 'Se coça mais do que antes' },
+  { icon: Utensils, text: 'Está comendo menos' },
+  { icon: Moon, text: 'Dorme mais que o normal' },
+  { icon: Hourglass, text: 'Está ficando velhinho' },
+  { icon: Heart, text: 'Ou está tudo bem e você só quer ter certeza' },
+];
+
+const planoRotina = [
+  { icon: Utensils, title: 'Alimentação', text: 'o que vale rever na comida e nos petiscos' },
+  { icon: Footprints, title: 'Movimento', text: 'caminhadas e brincadeiras na medida dele' },
+  { icon: Home, title: 'Ambiente', text: 'pequenos ajustes em casa' },
+  { icon: Eye, title: 'Acompanhamento', text: 'o que observar nas próximas semanas' },
+];
+
+const fases = [
+  { title: 'Filhote', text: 'comece com o pé direito' },
+  { title: 'Adulto', text: 'mantenha o que está funcionando' },
+  { title: 'Sênior', text: 'mais conforto nos anos dourados' },
+];
+
+const incluso = ['Triagem de bem-estar completa', 'Plano de rotina do seu pet', 'Relatório em PDF para o veterinário', 'Sem agulha, sem jejum, sem sedação'];
+
 export default function TutorPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const openContact = () => setModalOpen(true);
@@ -24,15 +48,54 @@ export default function TutorPage() {
     <div>
       <Header kind="tutor" onContact={openContact} />
       <main>
-        <section className="hero"><div className="wrap"><div className="hero-grid"><div className="anim-entrada"><span className="eyebrow">Para tutores em Bragança Paulista</span><h1>Você quer mais tempo com ele. Comece entendendo como ele está hoje.</h1><p className="lead">Uma triagem de bem-estar sem agulha, com dois relatórios: um com ajustes de rotina para mais qualidade de vida e outro pronto para enviar ao veterinário.</p><div className="hero-cta"><button className="btn btn-roxo" onClick={openContact}>Garantir minha vaga</button><a href="#recebe" className="btn btn-borda">O que você recebe</a></div><p className="hero-note"><Check size={16} />R$ 150 por pet. 50 vagas disponíveis neste ano.</p></div><div className="anim-entrada d1"><div className="moldura"><img src="/images/cao-pequeno.jpg" alt="Cão recebendo cuidado" /><div className="float-card score"><div className="valor">85</div><div className="rot">Wellness Score</div></div><div className="float-card balao"><b>Ótimo sinal!</b>Luna está dentro do padrão saudável hoje.</div></div></div></div></div></section>
-        <section className="pad" style={{ paddingTop: '32px' }}><div className="wrap"><Numbers items={[{ value: 'R$ 150', label: 'Por pet, com os dois relatórios' }, { value: '2', label: 'Relatórios: rotina e veterinário' }, { value: '50', label: 'Vagas disponíveis neste ano' }]} /></div></section>
-        <TabSection id="como-funciona" title="Três passos, sem estresse para ele e sem dúvida para você" tabs={tutorTabs} />
-        <DeviceSection kind="tutor" />
-        <GallerySection kind="tutor" />
-        <section className="pad"><div className="wrap"><div className="sec-head center"><span className="eyebrow">Cuidado no tempo certo</span><h2>Cuidar cedo é o caminho para mais anos bons juntos.</h2><p>Cães e gatos escondem desconforto. Quando o sinal aparece, muitas vezes já virou correria. A triagem mostra onde vale prestar atenção agora, enquanto pequenas mudanças ainda ajudam muito.</p></div></div></section>
-        <section className="pad" id="recebe"><div className="wrap"><div className="dois-cartoes"><div className="cartao-grande lavanda card"><span className="eyebrow">O que você recebe</span><h3>Um relatório para a rotina e outro para o veterinário</h3><p>Você sai sabendo o que ajustar no dia a dia e com um documento pronto para a próxima consulta.</p><ul><li><Check size={18} />Mudanças de rotina para mais qualidade de vida: alimentação, caminhada e ambiente</li><li><Check size={18} />Relatório em PDF pronto para baixar e encaminhar ao veterinário</li><li><Check size={18} />Nota geral de bem-estar e os pontos que merecem atenção</li></ul><ReportExample kind="tutor" /></div><div className="cartao-grande creme card"><span className="eyebrow">Importante</span><h3>Triagem não é diagnóstico</h3><p>A Utopet não substitui a consulta nem os exames. Ela mostra onde vale olhar com mais atenção.</p><ul><li><Check size={18} />Confirme as mudanças de rotina com o seu veterinário</li><li><Check size={18} />Quem decide o tratamento é ele</li></ul></div></div></div></section>
+        <section className="hero"><div className="wrap"><div className="hero-grid"><div className="anim-entrada"><span className="eyebrow">Para tutores em Bragança Paulista</span><h1>Você quer mais tempo com ele. Comece entendendo como ele está hoje.</h1><p className="lead">Em poucos minutos, sem agulha e com ele no seu colo, a Utopet mostra como está o bem-estar do seu pet e o que você pode ajustar no dia a dia para ele viver melhor.</p><div className="hero-cta"><button className="btn btn-roxo" onClick={openContact}>Quero entender meu pet</button><a href="#recebe" className="btn btn-borda">Ver o que eu recebo</a></div></div><div className="anim-entrada d1"><div className="moldura"><img src="/images/cao-pequeno.jpg" alt="Cão recebendo cuidado" /><div className="float-card score"><div className="valor">85</div><div className="rot">Wellness Score</div></div><div className="float-card balao"><b>Ótimo sinal!</b>Luna está dentro do padrão saudável hoje.</div></div></div></div></div></section>
+
+        <section className="pad numeros-texto" style={{ paddingTop: '32px' }}><div className="wrap"><Numbers items={[{ value: 'Sem agulha', label: 'Nada de coleta, jejum ou sedação' }, { value: 'No seu colo', label: 'Ele fica acordado e perto de você' }, { value: 'Na hora', label: 'Você sai com os relatórios em mãos' }]} /></div></section>
+
+        <section className="pad"><div className="wrap">
+          <div className="sec-head center"><h2>Ele não consegue te contar.</h2><p>Você conhece cada jeitinho dele. Mas cães e gatos escondem desconforto, e muita coisa passa despercebida até virar preocupação.</p></div>
+          <div className="situacoes-card card">
+            <h3>Talvez você já tenha notado</h3>
+            <ul className="situacoes">{situacoes.map(({ icon: Icon, text }) => <li key={text}><span className="ic"><Icon size={20} /></span>{text}</li>)}</ul>
+          </div>
+          <p className="nota-triagem">A triagem não dá diagnóstico. Ela mostra onde vale prestar atenção, para você e o veterinário saberem por onde começar.</p>
+        </div></section>
+
+        <TabSection id="como-funciona" title="Como é a triagem" tabs={tutorTabs} />
+
+        <section className="pad" id="recebe"><div className="wrap">
+          <div className="sec-head center"><span className="eyebrow">O que você leva</span><h2>O que você leva para casa</h2></div>
+          <div className="dois-cartoes">
+            <div className="cartao-grande lavanda card leva-card">
+              <h3>Plano de rotina do seu pet</h3>
+              <p>Mudanças simples para o dia a dia, pensadas para ele ter mais qualidade de vida.</p>
+              <ul className="itens-icone">{planoRotina.map(({ icon: Icon, title, text }) => <li key={title}><span className="ic"><Icon size={20} /></span><span><b>{title}:</b> {text}</span></li>)}</ul>
+            </div>
+            <div className="cartao-grande card leva-card">
+              <h3>Relatório para o veterinário</h3>
+              <p>Um PDF pronto para baixar e encaminhar. Seu veterinário recebe o panorama completo e decide os próximos passos.</p>
+              <ReportExample kind="tutor" />
+            </div>
+          </div>
+        </div></section>
+
+        <GallerySection kind="tutor">
+          <div className="fases">{fases.map((fase) => <div className="fase card" key={fase.title}><h3>{fase.title}</h3><p>{fase.text}</p></div>)}</div>
+        </GallerySection>
+
         <DarkBusinessBlock kind="tutor" onContact={openContact} />
-        <section className="pad" id="oferta"><div className="wrap"><div className="sec-head center"><span className="eyebrow">Valores</span><h2>R$ 150 por pet, em Bragança Paulista</h2><button className="btn btn-roxo" style={{ marginTop: '26px' }} onClick={openContact}>Garantir minha vaga</button></div><div className="oferta-blocos"><div className="oferta-bloco card"><div className="destaque">R$ 150</div><div className="desc">Por pet, com os dois relatórios inclusos.</div></div><div className="oferta-bloco card"><div className="destaque">Bragança Paulista</div><div className="desc">Onde estamos atendendo agora.</div></div><div className="oferta-bloco card"><div className="destaque">50 vagas</div><div className="desc">Disponíveis neste ano.</div></div><div className="oferta-bloco card"><div className="destaque">PDF para o veterinário</div><div className="desc">Pronto para baixar e encaminhar.</div></div></div></div></section>
+
+        <section className="pad"><div className="wrap"><div className="cartao-grande creme card comando-card"><span className="comando-ic"><Stethoscope size={26} /></span><div><h3>Seu veterinário continua no comando</h3><p>A Utopet não substitui a consulta nem os exames. Leve o relatório, confirme as mudanças de rotina com ele e deixe que ele decida o tratamento.</p></div></div></div></section>
+
+        <section className="pad" id="oferta"><div className="wrap">
+          <div className="sec-head center"><span className="eyebrow">Vagas limitadas</span><h2>São 50 vagas em Bragança Paulista neste ano</h2></div>
+          <div className="preco-card card">
+            <div className="preco-valor">R$ 150 <span>por pet</span></div>
+            <ul>{incluso.map((item) => <li key={item}><span className="ic"><Check size={16} /></span>{item}</li>)}</ul>
+            <button className="btn btn-roxo" onClick={openContact}>Garantir minha vaga</button>
+          </div>
+        </div></section>
+
         <FaqSection id="duvidas" title="Dúvidas de quem cuida" items={tutorFaq} />
         <FinalCTA kind="tutor" onContact={openContact} />
       </main>
