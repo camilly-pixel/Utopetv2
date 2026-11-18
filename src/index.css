@@ -652,6 +652,25 @@ footer.rodape { padding: 40px 0 36px; }
 .modal-success { text-align: center; padding: 20px 0; }
 .modal-success-icon { display: flex; justify-content: center; }
 @media (max-width: 520px) { .modal-content { padding: 28px 20px; border-radius: 24px; } }
+@media (max-width: 640px) {
+  .modal-overlay { padding: 12px; }
+  .modal-content { max-height: 90vh; max-height: 90dvh; padding: 24px 18px 0; border-radius: 22px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .modal-close { top: 10px; right: 10px; z-index: 2; }
+  .modal-header { margin-bottom: 18px; }
+  .modal-header h3 { font-size: 23px !important; margin-top: 12px !important; }
+  .modal-header p { font-size: 14px !important; margin-top: 6px !important; }
+  .modal-form { gap: 12px; padding-bottom: 16px; }
+  .form-field { gap: 4px; }
+  .form-field label { font-size: 13.5px; }
+  .form-field input,
+  .form-field select { padding: 11px 14px; border-radius: 14px; font-size: 16px; }
+  .modal-form button[type="submit"] { position: sticky; bottom: 14px; z-index: 1; margin-top: 4px; box-shadow: 0 0 0 14px #fff, 0 -18px 16px 8px #fff; }
+  .modal-success { padding: 8px 0 24px; }
+}
+@media (max-width: 640px) and (max-height: 560px) {
+  .modal-content { max-height: 100vh; max-height: 100dvh; }
+  .modal-overlay { padding: 0; }
+}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
