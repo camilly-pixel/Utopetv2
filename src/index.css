@@ -702,6 +702,40 @@ footer.rodape { padding: 40px 0 36px; }
 .form-erro { color: #b42318; font-size: 13.5px; line-height: 1.5; }
 .form-field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234a4560' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 44px; }
 .modal-success { text-align: center; padding: 20px 0; }
+
+/* ---------- Representantes ---------- */
+.rep-topo-btn { padding: 12px 22px; }
+.rep-titulo { font-size: clamp(32px, 4vw, 52px) !important; }
+.rep-aparelho { width: 100%; border-radius: 40px; aspect-ratio: 4/3.4; object-fit: cover; border: 1px solid var(--borda); box-shadow: 0 30px 80px -40px rgba(106, 53, 255, 0.45); }
+.rep-motivos { margin-top: 0; }
+.rep-motivos .fase { transition: transform 0.25s ease, border-color 0.25s ease; }
+.rep-motivos .fase:hover { transform: translateY(-4px); border-color: var(--roxo); }
+.rep-motivos .fase h3 { margin-top: 16px; }
+.rep-ic { width: 48px; height: 48px; border-radius: 50%; background: var(--lavanda); color: var(--roxo); display: flex; align-items: center; justify-content: center; }
+.rep-perfil { max-width: 900px; margin: 0 auto; }
+.rep-perfil .lista-check { margin-top: 24px; }
+.rep-passos { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: none; }
+.rep-passos li { display: flex; align-items: center; gap: 16px; padding: 26px 28px; border-radius: 28px; }
+.rep-passos p { font-size: 17px; font-weight: 600; line-height: 1.4; }
+.rep-num { width: 48px; height: 48px; border-radius: 50%; background: var(--roxo); color: #fff; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rep-form-card { max-width: 820px; margin: 0 auto; padding: 48px 44px; box-shadow: 0 30px 80px -40px rgba(106, 53, 255, 0.4); }
+.rep-form-card h2 { font-size: clamp(26px, 3vw, 36px); text-align: center; margin-bottom: 32px; }
+.rep-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.rep-largo { grid-column: 1 / -1; }
+.rep-form .btn { width: 100%; margin-top: 8px; }
+.rep-sucesso { text-align: center; padding: 24px 0; }
+.rep-sucesso-ic { width: 72px; height: 72px; margin: 0 auto 18px; border-radius: 50%; background: var(--lavanda); color: var(--roxo); display: flex; align-items: center; justify-content: center; }
+.rep-sucesso p { font-size: 18px; font-weight: 600; max-width: 460px; margin: 0 auto; }
+.rep-time { max-width: 900px; }
+@media (max-width: 900px) {
+  .rep-passos { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .rep-topo-btn { padding: 10px 16px; font-size: 14px; }
+  .rep-form { grid-template-columns: 1fr; gap: 14px; }
+  .rep-form-card { padding: 32px 22px; border-radius: 28px; }
+  .rep-form-card h2 { margin-bottom: 24px; }
+}
 .modal-success-icon { display: flex; justify-content: center; }
 @media (max-width: 520px) { .modal-content { padding: 28px 20px; border-radius: 24px; } }
 @media (max-width: 640px) {

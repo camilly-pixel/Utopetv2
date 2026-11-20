@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import VeterinarioPage from './pages/VeterinarioPage';
 import TutorPage from './pages/TutorPage';
+import RepresentantesPage from './pages/RepresentantesPage';
 
 // The initial PageView fires from index.html; redirects (REPLACE) are skipped so "/" -> "/veterinario" isn't counted twice.
 function PixelPageViews() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Navigate to="/veterinario" replace />} />
         <Route path="/veterinario" element={<VeterinarioPage />} />
         <Route path="/tutor" element={<TutorPage />} />
+        <Route path="/representantes" element={<RepresentantesPage />} />
         <Route path="*" element={<Navigate to="/veterinario" replace />} />
       </Routes>
     </BrowserRouter>
