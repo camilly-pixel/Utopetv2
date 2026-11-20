@@ -235,6 +235,25 @@ header.topo {
   .float-card.balao { right: 0; bottom: 2%; }
 }
 
+/* VSL */
+.vsl { max-width: 960px; margin: 64px auto 0; }
+.vsl-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; background: var(--escuro); border: 1px solid var(--borda); box-shadow: 0 30px 80px -36px rgba(21, 18, 31, 0.45); }
+.vsl-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; background: var(--escuro); }
+.vsl-cover { position: absolute; inset: 0; border: 0; padding: 0; cursor: pointer; background: linear-gradient(180deg, rgba(26, 17, 69, 0) 40%, rgba(26, 17, 69, 0.35) 100%); display: flex; align-items: center; justify-content: center; }
+.vsl-play { width: 96px; height: 96px; border-radius: 50%; background: #6a35ff; color: #fff; display: flex; align-items: center; justify-content: center; padding-left: 6px; box-shadow: 0 0 0 10px rgba(106, 53, 255, 0.25), 0 20px 50px -14px rgba(106, 53, 255, 0.8); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.vsl-cover:hover .vsl-play, .vsl-cover:focus-visible .vsl-play { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(106, 53, 255, 0.22), 0 24px 60px -14px rgba(106, 53, 255, 0.9); }
+.vsl-cover:focus-visible { outline: 3px solid var(--lavanda); outline-offset: -3px; }
+.vsl-badge { position: absolute; top: 18px; left: 18px; background: #fff; color: var(--texto); font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 100px; box-shadow: 0 10px 24px -12px rgba(21, 18, 31, 0.4); }
+.vsl-cta { display: flex; justify-content: center; margin-top: 28px; }
+@media (max-width: 640px) {
+  .vsl { margin-top: 40px; }
+  .vsl-frame { border-radius: 18px; }
+  .vsl-play { width: 72px; height: 72px; }
+  .vsl-play svg { width: 28px; height: 28px; }
+  .vsl-badge { top: 12px; left: 12px; font-size: 12px; padding: 6px 12px; }
+  .vsl-cta .btn { width: 100%; }
+}
+
 /* Entrada do hero */
 .anim-entrada { animation: entrar 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .anim-entrada.d1 { animation-delay: 0.12s; }
