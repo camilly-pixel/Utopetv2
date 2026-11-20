@@ -3,6 +3,7 @@ import { Check, X } from 'lucide-react';
 import { Header, Numbers, TabSection, DeviceSection, GallerySection, ReportExample, DarkBusinessBlock, FaqSection, FinalCTA, Footer } from '../components/UtopetShared';
 import { LeadModal } from '../components/LeadModal';
 import { VslVideo } from '../components/VslVideo';
+import { CredibilitySection } from '../components/CredibilitySection';
 
 const vetTabs = [
   { label: 'Antes', heading: 'Pré-triagem padronizada', description: 'Perguntas simples sobre rotina, alimentação e sinais recentes, que a recepção aplica antes de o pet entrar no consultório.', chips: ['Roteiro pronto', 'Recepção aplica', 'Histórico do pet'] },
@@ -35,6 +36,7 @@ export default function VeterinarioPage() {
         <section className="pad" id="oferta"><div className="wrap"><div className="sec-head center"><span className="eyebrow">Preço de lançamento</span><h2>De R$ 29.000 por R$ 19.000</h2><button className="btn btn-roxo" style={{ marginTop: '26px' }} onClick={openContact}>Agendar demonstração</button></div><div className="oferta-blocos"><div className="oferta-bloco card"><div className="destaque"><span className="preco-antigo">De R$ 29.000</span><br /><span className="preco-novo">por R$ 19.000</span></div><div className="desc">Preço de lançamento do aparelho, com software incluso.</div></div><div className="oferta-bloco card"><div className="destaque">6x sem juros</div><div className="desc">Seis parcelas de R$ 3.166,67.</div></div><div className="oferta-bloco card"><div className="destaque">A parcela se paga no mês</div><div className="desc">Com 10 triagens por dia a R$ 30, a receita extra estimada é de R$ 6.000 por mês. Confira no simulador.</div></div><div className="oferta-bloco card"><div className="destaque">Treinamento incluso</div><div className="desc">Sua equipe opera o aparelho em uma sessão.</div></div></div></div></section>
         <FaqSection id="duvidas" title="O que toda clínica pergunta" items={vetFaq} />
         <FinalCTA kind="veterinario" onContact={openContact} />
+        <CredibilitySection onContact={openContact} />
       </main>
       <Footer />
       <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} kind="veterinario" />
