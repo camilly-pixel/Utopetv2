@@ -1,6 +1,44 @@
 import { useState } from 'react';
-import { Check, X, Plus, Menu } from 'lucide-react';
+import { Check, X, Plus, Menu, Award } from 'lucide-react';
 import { LogoSvg } from './Icons';
+import '../styles/english.css';
+
+export function NumbersEn({ items }: { items: Array<{ value: string; label: string }> }) {
+  return <div className="numeros">{items.map((item) => <div className="numero card" key={`${item.value}-${item.label}`}><div className="n">{item.value}</div><div className="t">{item.label}</div></div>)}</div>;
+}
+
+const founderPhotos = [
+  { src: '/enviagora-cd-equipe.jpg', caption: 'Enviagora’s fulfillment operation in Brazil', alt: 'Enviagora team gathered at its fulfillment center in Brazil' },
+  { src: '/enviagora-day-plateia.jpg', caption: 'Enviagora Day', alt: 'Audience gathered in an auditorium during Enviagora Day' },
+  { src: '/enviagora-day-painel.jpg', caption: 'Panel at Enviagora Day', alt: 'Speakers on stage during a panel at Enviagora Day' },
+];
+
+export function FoundersSectionEn({ onContact }: { onContact: () => void }) {
+  return (
+    <section className="pad" id="founders">
+      <div className="wrap">
+        <div className="sec-head center">
+          <h2>Who’s behind Utopet</h2>
+          <p>Utopet was built by the founders of Enviagora and Fleurity, companies already operating at scale in Brazil.</p>
+        </div>
+        <figure className="cred-time"><img src="/utopet-fundadores.jpg" alt="Utopet founding team" loading="lazy" /></figure>
+        <div className="cred-selo"><Award size={18} />Competing for Nestlé’s acceleration program</div>
+        <div className="cred-faixa">
+          <h3>From the team behind Enviagora</h3>
+          <div className="cred-fotos">
+            {founderPhotos.map((photo) => (
+              <figure key={photo.src} className="cred-foto">
+                <div className="cred-foto-img"><img src={photo.src} alt={photo.alt} loading="lazy" /></div>
+                <figcaption>{photo.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+        <div className="cred-cta"><button className="btn btn-roxo" onClick={onContact}>Book a demo</button></div>
+      </div>
+    </section>
+  );
+}
 
 export function HeaderEn({ onContact }: { onContact: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
