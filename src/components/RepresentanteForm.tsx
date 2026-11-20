@@ -121,7 +121,7 @@ export function RepresentanteForm() {
       {field('empresa', 'Empresa ou marcas que representa', text('empresa', 'Opcional'))}
       {field('linkedin', 'LinkedIn', text('linkedin', 'Opcional', 'url', { inputMode: 'url' }))}
       {error && <p role="alert" className="form-erro rep-largo">{error}</p>}
-      <button type="submit" className="btn btn-roxo rep-largo" disabled={loading}>{loading ? 'Enviando...' : 'Enviar inscrição'}</button>
+      <button type="submit" className="btn btn-roxo rep-largo" disabled={loading}>{loading ? 'Enviando...' : 'Quero garantir a minha região'}</button>
     </form>
   );
 }
