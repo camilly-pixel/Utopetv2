@@ -3,6 +3,18 @@ import { Check, X, Plus, Menu, Award } from 'lucide-react';
 import { LogoSvg } from './Icons';
 import '../styles/english.css';
 
+export function VslVideoEn() {
+  const [played, setPlayed] = useState(false);
+  return (
+    <div className="vsl anim-entrada d1">
+      <div className="vsl-frame">
+        <video src="/utopet-vsl-us.mp4" poster="/utopet-vsl-us-poster.jpg" preload="metadata" playsInline controls onPlay={() => setPlayed(true)} aria-label="Utopet introduction video for veterinary clinics" />
+        {!played && <span className="vsl-badge vsl-badge-en">Watch in 1:20</span>}
+      </div>
+    </div>
+  );
+}
+
 export function NumbersEn({ items }: { items: Array<{ value: string; label: string }> }) {
   return <div className="numeros">{items.map((item) => <div className="numero card" key={`${item.value}-${item.label}`}><div className="n">{item.value}</div><div className="t">{item.label}</div></div>)}</div>;
 }
@@ -140,6 +152,7 @@ const faq: Array<[string, string]> = [
   ['Does the pet need any preparation?', 'No fasting, blood draw or sedation. The pet stays awake and comfortable during the reading.'],
   ['Who interprets the results?', 'You do. The software organizes the information; the clinical conclusion is always the veterinarian’s.'],
   ['What if an owner asks if it’s a diagnosis?', 'The report itself explains that it is a wellness screening, not a diagnosis.'],
+  ['How much does it cost?', 'The launch price is $2,990 (regular $4,990), including the device, the software and staff training.'],
 ];
 
 export function FaqSectionEn() {

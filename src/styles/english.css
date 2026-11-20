@@ -1,5 +1,9 @@
-.hero-en-titulo { font-size: clamp(34px, 4.4vw, 56px) !important; }
-.hero-en-img { width: 100%; border-radius: 40px; aspect-ratio: 4/4.2; object-fit: cover; border: 1px solid var(--borda); box-shadow: 0 30px 80px -40px rgba(106, 53, 255, 0.45); }
+.hero-en .vsl { max-width: clamp(720px, calc((100svh - 480px) * 16 / 9), 960px); }
+.hero-en .vsl-badge-en { pointer-events: none; }
+.preco-en-label { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--roxo); background: var(--lavanda); padding: 6px 14px; border-radius: 100px; }
+.preco-en-antigo { margin-top: 16px; font-size: 20px; font-weight: 500; color: var(--texto-2); text-decoration: line-through; }
+.preco-en-inclui { margin-top: 8px; font-size: 15.5px; color: var(--texto-2); line-height: 1.5; }
 .simulador .sim-input { width: 100%; padding: 13px 16px; border-radius: 16px; border: 1.5px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: #fff; font-family: var(--fonte); font-size: 16px; font-weight: 600; transition: border-color 0.2s, box-shadow 0.2s; }
 .simulador .sim-input:focus { outline: none; border-color: var(--lavanda); box-shadow: 0 0 0 3px rgba(201, 198, 255, 0.2); }
 .form-consent { font-size: 12.5px; color: var(--texto-2); line-height: 1.5; text-align: center; }
+@media (max-width: 900px) { .hero-en .vsl { max-width: none; } }
