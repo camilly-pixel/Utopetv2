@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 
-export function VslVideo({ onContact }: { onContact: () => void }) {
+export function VslVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
 
@@ -16,7 +16,7 @@ export function VslVideo({ onContact }: { onContact: () => void }) {
   };
 
   return (
-    <div className="vsl anim-entrada d2">
+    <div className="vsl anim-entrada d1">
       <div className="vsl-frame">
         <video
           ref={videoRef}
@@ -33,9 +33,6 @@ export function VslVideo({ onContact }: { onContact: () => void }) {
             <span className="vsl-badge">Assista em 1min30</span>
           </button>
         )}
-      </div>
-      <div className="vsl-cta">
-        <button className="btn btn-roxo" onClick={onContact}>Agendar demonstração</button>
       </div>
     </div>
   );

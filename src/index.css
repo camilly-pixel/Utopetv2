@@ -244,14 +244,23 @@ header.topo {
 .vsl-cover:hover .vsl-play, .vsl-cover:focus-visible .vsl-play { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(106, 53, 255, 0.22), 0 24px 60px -14px rgba(106, 53, 255, 0.9); }
 .vsl-cover:focus-visible { outline: 3px solid var(--lavanda); outline-offset: -3px; }
 .vsl-badge { position: absolute; top: 18px; left: 18px; background: #fff; color: var(--texto); font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 100px; box-shadow: 0 10px 24px -12px rgba(21, 18, 31, 0.4); }
-.vsl-cta { display: flex; justify-content: center; margin-top: 28px; }
+.hero.hero-centro { padding: 98px 0 64px; }
+.hero-coluna { text-align: center; max-width: 920px; margin: 0 auto; }
+.hero-centro h1 { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.12; margin: 16px auto 0; }
+.hero-centro .lead { font-size: clamp(16px, 1.25vw, 17.5px); max-width: 680px; margin: 14px auto 22px; }
+.hero-centro .hero-cta { justify-content: center; }
+.hero-centro .hero-note { justify-content: center; margin-top: 14px; }
+.hero-centro .vsl { width: 100%; max-width: clamp(720px, calc((100svh - 500px) * 16 / 9), 880px); margin-top: 28px; }
+@media (max-width: 900px) {
+  .hero.hero-centro { padding: 112px 0 48px; }
+  .hero-centro .vsl { max-width: none; }
+}
 @media (max-width: 640px) {
   .vsl { margin-top: 40px; }
   .vsl-frame { border-radius: 18px; }
   .vsl-play { width: 72px; height: 72px; }
   .vsl-play svg { width: 28px; height: 28px; }
   .vsl-badge { top: 12px; left: 12px; font-size: 12px; padding: 6px 12px; }
-  .vsl-cta .btn { width: 100%; }
 }
 
 /* Entrada do hero */
