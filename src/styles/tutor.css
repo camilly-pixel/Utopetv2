@@ -69,16 +69,125 @@
 .tt-aviso { margin-top: 18px; font-size: 15px; font-weight: 600; color: var(--texto); }
 
 .tt-quem-texto { margin-top: 0; }
-.tt-equipe { margin: 32px auto 0; max-width: 880px; }
-.tt-equipe img { aspect-ratio: 4 / 3; object-fit: cover; object-position: center top; }
-.tt-equipe figcaption { margin-top: 12px; text-align: center; }
-.tt-equipe-texto { display: block; font-size: 16px; font-weight: 600; }
+.tt-depoimentos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tt-depoimento { display: flex; flex-direction: column; gap: 18px; }
+.tt-depoimento-foto { position: relative; margin: 0; border-radius: 32px; overflow: hidden; aspect-ratio: 1 / 1; background: var(--lavanda); }
+.tt-depoimento-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s ease; }
+.tt-depoimento:hover .tt-depoimento-foto img { transform: scale(1.04); }
+.tt-depoimento-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26, 17, 69, 0.78), rgba(26, 17, 69, 0) 48%); }
+.tt-depoimento-foto figcaption { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 1; color: #fff; font-size: 16px; font-weight: 700; line-height: 1.3; }
+.tt-depoimento blockquote { margin: 0; padding: 0 6px; }
+.tt-depoimento blockquote svg { color: var(--roxo); }
+.tt-depoimento blockquote p { margin-top: 8px; font-size: 16px; line-height: 1.6; color: var(--texto); }
 
-.tt-depoimentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.tt-depoimento { padding: 28px; border-radius: 32px; margin: 0; }
-.tt-depoimento-ic { color: var(--roxo); }
-.tt-depoimento p { margin-top: 12px; font-size: 16px; line-height: 1.6; }
-.tt-depoimento footer { margin-top: 16px; font-size: 14px; color: var(--texto-2); }
+/* Relatório no celular */
+.tt-celulares { position: relative; overflow: hidden; padding: 112px 0 88px; background: radial-gradient(ellipse 70% 60% at 50% 72%, rgba(106, 53, 255, 0.42), rgba(106, 53, 255, 0) 70%), linear-gradient(180deg, #1a1145 0%, #221560 100%); color: #fff; }
+.tt-celulares .sec-head h2 { color: #fff; margin-top: 0; }
+.tt-celulares .sec-head p { color: rgba(255, 255, 255, 0.74); }
+.tt-celulares-linha { display: flex; justify-content: center; align-items: flex-start; gap: 0; padding: 16px 0 8px; }
+.tt-iphone { flex-shrink: 0; width: 270px; aspect-ratio: 9 / 19.2; padding: 10px; border-radius: 48px; background: linear-gradient(145deg, #2b2b31, #0b0b0e 60%); box-shadow: 0 0 0 1.5px #3c3c44 inset, 0 40px 80px -30px rgba(0, 0, 0, 0.7), 0 18px 40px -24px rgba(106, 53, 255, 0.5); transition: transform 0.5s ease; }
+.tt-iphone.lado { margin-top: 64px; transform: scale(0.92); opacity: 0.96; }
+.tt-iphone.lado:first-child { margin-right: -28px; }
+.tt-iphone.lado:last-child { margin-left: -28px; }
+.tt-iphone.centro { position: relative; z-index: 2; width: 300px; }
+.tt-iphone:hover { transform: translateY(-6px); }
+.tt-iphone.lado:hover { transform: scale(0.92) translateY(-6px); }
+.tt-iphone-tela { position: relative; height: 100%; border-radius: 39px; overflow: hidden; background: #f8f7ff; color: var(--texto); font-family: 'DM Sans', var(--fonte); display: flex; flex-direction: column; }
+.tt-iphone-status { position: absolute; top: 0; left: 0; right: 0; z-index: 3; height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; }
+.tt-iphone-ilha { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); width: 92px; height: 26px; border-radius: 20px; background: #000; }
+.tt-iphone-icones { display: flex; align-items: center; gap: 4px; }
+.tt-iphone-conteudo { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.tt-iphone-home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 104px; height: 4px; border-radius: 4px; background: rgba(21, 18, 31, 0.8); }
+.tt-iphone:has(.tt-tela-capa) .tt-iphone-status { color: #fff; }
+.tt-tela-capa { position: relative; height: 42%; flex-shrink: 0; }
+.tt-tela-capa img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.tt-tela-capa::before { content: ''; position: absolute; inset: 0 0 auto; height: 60px; background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)); z-index: 1; }
+.tt-tela-capa::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26, 17, 69, 0.85), rgba(26, 17, 69, 0) 60%); }
+.tt-tela-capa div { position: absolute; left: 18px; bottom: 14px; z-index: 2; color: #fff; display: flex; flex-direction: column; }
+.tt-tela-capa b { font-size: 30px; line-height: 1.1; letter-spacing: -0.02em; }
+.tt-tela-capa span { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+.tt-tela-corpo { padding: 16px 16px 28px; display: flex; flex-direction: column; gap: 12px; }
+.tt-iphone-conteudo > .tt-tela-corpo:only-child { padding-top: 52px; }
+.tt-tela-abas { display: flex; padding: 3px; border-radius: 12px; background: #ebe8fb; font-size: 11.5px; font-weight: 500; }
+.tt-tela-abas span { flex: 1; text-align: center; padding: 6px 0; border-radius: 9px; color: var(--texto-2); }
+.tt-tela-abas .ativa { background: #fff; color: var(--roxo-esc); font-weight: 700; box-shadow: 0 2px 6px rgba(21, 18, 31, 0.1); }
+.tt-tela-anel { position: relative; width: 108px; height: 108px; margin: 2px auto; }
+.tt-tela-anel svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.tt-tela-anel circle { fill: none; stroke-width: 9; stroke-linecap: round; }
+.tt-tela-anel .fundo { stroke: #e4e0fa; }
+.tt-tela-anel .valor { stroke: var(--roxo); }
+.tt-tela-anel div { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.tt-tela-anel b { font-size: 30px; line-height: 1; }
+.tt-tela-anel small { font-size: 10.5px; color: var(--texto-2); margin-top: 3px; }
+.tt-tela-resumo { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.tt-tela-resumo li { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; background: #fff; font-size: 12.5px; font-weight: 500; box-shadow: 0 1px 0 #ebe8fb; }
+.ponto { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.ponto.laranja { background: #e8590c; }
+.ponto.ambar { background: var(--laranja); }
+.ponto.verde { background: var(--verde); }
+.tt-tela-rot { font-size: 11px; font-weight: 500; color: var(--roxo); }
+.tt-tela-titulo { font-size: 20px; line-height: 1.2; letter-spacing: -0.01em; margin: -6px 0 0; }
+.tt-tela-insights { display: flex; flex-direction: column; gap: 9px; }
+.tt-tela-insight { padding: 12px; border-radius: 16px; background: #efebff; }
+.tt-tela-insight .topo { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.tt-tela-insight b { font-size: 13px; }
+.tt-tela-insight p { font-size: 11.5px; line-height: 1.45; color: var(--texto-2); margin-top: 5px; }
+.tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+.tag.laranja { background: #ffe3d3; color: #b23f00; }
+.tag.ambar { background: #fdefd2; color: #8a5300; }
+.tt-tela-link { display: inline-block; margin-top: 8px; font-size: 11.5px; font-weight: 700; color: var(--roxo-esc); }
+.tt-tela-voltar { display: flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 500; color: var(--roxo); margin-left: -4px; }
+.tt-tela-detalhe .tt-tela-titulo { margin-top: 0; }
+.tt-tela-escala { padding: 12px; border-radius: 16px; background: #fff; box-shadow: 0 1px 0 #ebe8fb; }
+.tt-tela-escala .barra { position: relative; height: 8px; border-radius: 8px; background: linear-gradient(90deg, #1d9e75, #ef9f27 55%, #e8590c); }
+.tt-tela-escala .marcador { position: absolute; left: 50%; top: 50%; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--roxo); transform: translate(-50%, -50%); box-shadow: 0 2px 6px rgba(21, 18, 31, 0.25); }
+.tt-tela-escala .rotulos { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10.5px; color: var(--texto-2); }
+.tt-tela-escala .ativo { color: var(--roxo-esc); font-weight: 700; }
+.tt-tela-bloco b { font-size: 12.5px; }
+.tt-tela-bloco p, .tt-tela-bloco li { font-size: 11.5px; line-height: 1.45; color: var(--texto-2); }
+.tt-tela-bloco p { margin-top: 3px; }
+.tt-tela-bloco ul { margin: 4px 0 0; padding-left: 16px; }
+.tt-tela-botao { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 2px; padding: 11px; border-radius: 14px; background: var(--roxo); color: #fff; font-size: 12.5px; font-weight: 700; }
+.tt-celulares-legenda { text-align: center; margin-top: 28px; font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+
+/* Carrossel de sistemas */
+.tt-sis-cabeca { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+.tt-sis-cabeca .sec-head { margin-bottom: 0; }
+.tt-sis-setas { display: flex; gap: 10px; flex-shrink: 0; }
+.tt-sis-setas button { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--borda); background: #fff; color: var(--texto); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s; }
+.tt-sis-setas button:hover:not(:disabled) { background: var(--roxo); border-color: var(--roxo); color: #fff; }
+.tt-sis-setas button:disabled { opacity: 0.35; cursor: default; }
+.tt-sis-trilho { list-style: none; margin: 0; display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: max(24px, calc((100vw - 1152px) / 2)); padding: 4px max(24px, calc((100vw - 1152px) / 2)) 12px; scrollbar-width: none; overscroll-behavior-x: contain; }
+.tt-sis-trilho::-webkit-scrollbar { display: none; }
+.tt-sis { flex: 0 0 300px; height: 420px; scroll-snap-align: start; perspective: 1400px; }
+.tt-sis-giro { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.tt-sis.virado .tt-sis-giro { transform: rotateY(180deg); }
+.tt-sis-frente, .tt-sis-verso { position: absolute; inset: 0; border-radius: 32px; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.tt-sis-frente { display: block; padding: 0; border: 0; cursor: pointer; text-align: left; font: inherit; background: var(--escuro); }
+.tt-sis-frente img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s ease; }
+.tt-sis-frente:hover img { transform: scale(1.05); }
+.tt-sis-frente::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 11, 48, 0.88) 0%, rgba(18, 11, 48, 0.35) 38%, rgba(18, 11, 48, 0) 60%); }
+.tt-sis-frente:focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; }
+.tt-sis-pilula { position: absolute; top: 18px; left: 18px; z-index: 1; padding: 7px 14px; border-radius: 100px; background: #fff; color: var(--texto); font-size: 13px; font-weight: 700; max-width: calc(100% - 92px); }
+.tt-sis-mais { position: absolute; top: 14px; right: 14px; z-index: 1; width: 42px; height: 42px; border-radius: 50%; background: rgba(255, 255, 255, 0.22); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s, transform 0.3s; }
+.tt-sis-frente:hover .tt-sis-mais { background: #fff; color: var(--roxo); transform: rotate(90deg); }
+.tt-sis-frase { position: absolute; left: 22px; right: 22px; bottom: 24px; z-index: 1; color: #fff; font-size: 26px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+.tt-sis-verso { transform: rotateY(180deg); background: #efebff; border: 1px solid var(--borda); padding: 24px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+.tt-sis-verso-topo { display: flex; flex-direction: column; gap: 2px; }
+.tt-sis-verso-topo b { font-size: 21px; line-height: 1.2; }
+.tt-sis-verso-topo span { font-size: 13px; color: var(--roxo-esc); font-weight: 500; }
+.tt-sis-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; flex: 1; overflow-y: auto; }
+.tt-sis-chips li { padding: 6px 11px; border-radius: 100px; background: #fff; border: 1px solid var(--borda); font-size: 12.5px; font-weight: 500; line-height: 1.3; }
+.tt-sis-voltar { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 100px; border: 0; background: var(--roxo); color: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.tt-sis-voltar:hover { background: var(--roxo-esc); }
+.tt-sis-progresso { height: 3px; border-radius: 3px; background: var(--borda); margin-top: 24px; overflow: hidden; }
+.tt-sis-progresso span { display: block; height: 100%; border-radius: 3px; background: var(--roxo); transition: width 0.15s linear; }
+.tt-sis-nota { margin-top: 16px; font-size: 13.5px; color: var(--texto-2); }
+
+@media (min-width: 901px) and (max-width: 1220px) {
+  .tt-topo .nav-links { gap: 16px; font-size: 13.5px; }
+  .tt-topo .nav-links .btn { padding-left: 18px; padding-right: 18px; }
+}
 
 .tt-pagina #oferta .preco-card ul { margin-bottom: 18px; }
 .tt-oferta-pagamento { font-size: 15px; color: var(--texto-2); margin-bottom: 22px; }
@@ -112,7 +221,14 @@
   .tt-duas-col, .tt-recebe { grid-template-columns: 1fr; gap: 32px; }
   .tt-hero-cta { max-width: none; }
   .tt-hero-foto { max-width: 420px; margin: 0 auto; }
-  .tt-depoimentos { grid-template-columns: 1fr; }
+  .tt-depoimentos { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin: 0 -24px; padding: 0 24px 8px; scroll-padding-left: 24px; scrollbar-width: none; }
+  .tt-depoimento { flex: 0 0 78%; scroll-snap-align: start; }
+  .tt-celulares-linha { justify-content: flex-start; align-items: flex-start; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -24px; padding: 8px 24px 16px; scroll-padding-left: 24px; scrollbar-width: none; }
+  .tt-celulares-linha::-webkit-scrollbar { display: none; }
+  .tt-iphone, .tt-iphone.centro { width: 260px; scroll-snap-align: center; }
+  .tt-iphone.lado, .tt-iphone.lado:hover { margin: 0; transform: none; }
+  .tt-iphone:hover { transform: none; }
+  .tt-sis-setas { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -125,7 +241,10 @@
   .tt-atencao li { padding: 12px 14px; font-size: 14.5px; }
   .tt-racas { border-radius: 28px; }
   .tt-tecnologia { flex-direction: column; gap: 18px; padding: 30px 22px; border-radius: 28px; }
-  .tt-equipe { max-width: none; }
+  .tt-celulares { padding: 80px 0 64px; }
+  .tt-sis { flex-basis: 78vw; height: min(420px, 108vw); }
+  .tt-sis-frase { font-size: 23px; }
+  .tt-sis-trilho { gap: 14px; }
   .tt-foto img { border-radius: 26px; }
   .tt-hero-foto img { border-radius: 140px 140px 26px 26px; }
   .tt-form-card { padding: 26px 20px; border-radius: 28px; }

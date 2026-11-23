@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ClipboardList, FileText, Menu, MessageCircle, PawPrint, Plus, Quote, X } from 'lucide-react';
 import { LogoSvg } from './Icons';
 
-const navLinks: Array<[string, string]> = [['Como funciona', 'como-funciona'], ['O que você recebe', 'recebe'], ['Quem somos', 'quem-somos'], ['Valores', 'oferta'], ['Dúvidas', 'duvidas']];
+const navLinks: Array<[string, string]> = [['Como funciona', 'como-funciona'], ['O que você recebe', 'recebe'], ['Relatório', 'relatorio'], ['O que lemos', 'o-que-lemos'], ['Quem somos', 'quem-somos'], ['Valores', 'oferta'], ['Dúvidas', 'duvidas']];
 
 export function TutorHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +11,7 @@ export function TutorHeader() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <header className="topo">
+    <header className="topo tt-topo">
       <div className="wrap">
         <nav className="nav-pilula" aria-label="Navegação principal">
           <a href="/tutor" className="logo" aria-label="Utopet"><LogoSvg />topet</a>
@@ -89,7 +89,7 @@ export function TutorReportMock() {
   );
 }
 
-type Depoimento = { nome: string; pet: string; texto: string };
+type Depoimento = { nome: string; pet: string; texto: string; foto: string };
 
 const depoimentos: Depoimento[] = [];
 
@@ -98,15 +98,17 @@ export function TutorTestimonials() {
   return (
     <section className="pad" id="depoimentos"><div className="wrap">
       <div className="sec-head center"><span className="eyebrow">Depoimentos</span><h2>Quem já fez a triagem</h2></div>
-      <div className="tt-depoimentos">
+      <ul className="tt-depoimentos">
         {depoimentos.map((item) => (
-          <blockquote className="tt-depoimento card" key={`${item.nome}-${item.pet}`}>
-            <Quote size={22} className="tt-depoimento-ic" />
-            <p>{item.texto}</p>
-            <footer><b>{item.nome}</b>, tutor(a) do(a) {item.pet}</footer>
-          </blockquote>
+          <li className="tt-depoimento" key={`${item.nome}-${item.pet}`}>
+            <figure className="tt-depoimento-foto">
+              <img src={item.foto} alt={`${item.nome} com ${item.pet}`} loading="lazy" />
+              <figcaption>{item.nome} - Tutor(a) do(a) {item.pet}</figcaption>
+            </figure>
+            <blockquote><Quote size={20} aria-hidden="true" /><p>{item.texto}</p></blockquote>
+          </li>
         ))}
-      </div>
+      </ul>
     </div></section>
   );
 }

@@ -1,6 +1,8 @@
 import { Check, Footprints, Hand, Utensils, Moon, Hourglass, Heart, Home, Eye, FileText, MapPin, Sparkles } from 'lucide-react';
 import { TutorHeader, TutorSteps, TutorReportMock, TutorTestimonials, TutorFaq, TutorFooter } from '../components/TutorSections';
 import { TutorForm } from '../components/TutorForm';
+import { TutorPhones } from '../components/TutorPhones';
+import { TutorSystems } from '../components/TutorSystems';
 import '../styles/tutor.css';
 
 const tutorFaq: Array<[string, string]> = [
@@ -119,6 +121,9 @@ export default function TutorPage() {
           </div>
         </div></section>
 
+        <TutorPhones />
+        <TutorSystems />
+
         <section className="pad" id="todo-pet"><div className="wrap">
           <div className="sec-head center"><span className="eyebrow">Cães e gatos</span><h2>Para todo cão e todo gato</h2><p>Vira-lata, de raça, filhote ou idoso. Cada pet tem seu jeitinho, e a triagem é feita para ele.</p></div>
           <div className="tt-racas"><img src="/tutor-racas.jpg" alt="Vários cães e gatos de raças diferentes juntos" loading="lazy" /></div>
@@ -142,10 +147,6 @@ export default function TutorPage() {
             <figure className="tt-foto"><img src="/utopet-fundadores.jpg" alt="Fundadores da Utopet" loading="lazy" /></figure>
             <p className="tt-texto tt-quem-texto">A Utopet nasceu em Bragança Paulista, criada pelos mesmos fundadores da Enviagora e da Fleurity. A gente queria uma forma simples de cuidar melhor dos nossos próprios pets e de saber o que observar antes de virar preocupação. Hoje estamos competindo para ser acelerados pela Nestlé.</p>
           </div>
-          <figure className="tt-foto tt-equipe">
-            <img src="/tutor-equipe.jpg" alt="Equipe Utopet de camiseta da marca com o aparelho" loading="lazy" />
-            <figcaption><span className="tt-equipe-texto">Nossa equipe vai até você de camiseta Utopet.</span><span className="tt-legenda">Imagem ilustrativa</span></figcaption>
-          </figure>
         </div></section>
 
         <TutorTestimonials />
