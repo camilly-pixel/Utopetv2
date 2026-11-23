@@ -1,0 +1,2 @@
+[functions.bi-leads]
+verify_jwt = false
