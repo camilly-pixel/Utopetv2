@@ -156,7 +156,7 @@ export default function TutorPage() {
           <div className="sec-head center"><span className="eyebrow">Vagas limitadas</span><h2>São 50 vagas em Bragança Paulista neste ano</h2></div>
           <div className="preco-card card">
             <div className="tt-preco-antigo">De R$ 350</div>
-            <div className="preco-valor tt-preco-novo"><small>por apenas</small> R$ 150</div>
+            <div className="preco-valor tt-preco-novo"><small>por apenas</small> R$ 150 <span>por pet</span></div>
             <p className="tt-preco-nota">Preço de implantação em Bragança Paulista. Depois, a triagem com visita passa a custar R$ 350.</p>
             <ul>{incluso.map((item) => <li key={item}><span className="ic"><Check size={16} /></span>{item}</li>)}</ul>
             <p className="tt-oferta-pagamento">Pagamento só na visita, por Pix ou cartão.</p>
