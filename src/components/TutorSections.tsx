@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { ClipboardList, FileText, Menu, MessageCircle, PawPrint, Plus, Quote, X } from 'lucide-react';
 import { LogoSvg } from './Icons';
 
@@ -113,7 +113,11 @@ export function TutorTestimonials() {
   );
 }
 
-export function TutorFaq({ items }: { items: Array<[string, string]> }) {
+export function TutorPrecoAncora() {
+  return <><s className="tt-preco-de">De R$ 350</s> por apenas R$ 150</>;
+}
+
+export function TutorFaq({ items }: { items: Array<[string, ReactNode]> }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="pad" id="duvidas"><div className="wrap">

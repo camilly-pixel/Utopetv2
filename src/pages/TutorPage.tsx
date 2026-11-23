@@ -1,12 +1,13 @@
 import { Check, Footprints, Hand, Utensils, Moon, Hourglass, Heart, Home, Eye, FileText, MapPin, Sparkles } from 'lucide-react';
-import { TutorHeader, TutorSteps, TutorReportMock, TutorTestimonials, TutorFaq, TutorFooter } from '../components/TutorSections';
+import type { ReactNode } from 'react';
+import { TutorHeader, TutorPrecoAncora, TutorSteps, TutorReportMock, TutorTestimonials, TutorFaq, TutorFooter } from '../components/TutorSections';
 import { TutorForm } from '../components/TutorForm';
 import { TutorPhones } from '../components/TutorPhones';
 import { TutorSystems } from '../components/TutorSystems';
 import '../styles/tutor.css';
 
-const tutorFaq: Array<[string, string]> = [
-  ['Vocês vão mesmo até a minha casa?', 'Sim. Nesta fase de implantação em Bragança Paulista, a visita está incluída nos R$ 150.'],
+const tutorFaq: Array<[string, ReactNode]> = [
+  ['Vocês vão mesmo até a minha casa?', <>Sim. Nesta fase de implantação em Bragança Paulista, a visita está incluída no preço: <TutorPrecoAncora />.</>],
   ['Posso fazer em outro lugar?', 'Pode: num lugar público, numa praça ou no consultório do seu veterinário de confiança.'],
   ['Quando eu pago?', 'Só no dia da visita, por Pix ou cartão. Nada é cobrado no formulário.'],
   ['O que acontece depois que eu envio o formulário?', 'A gente te chama no WhatsApp em até 24 horas para combinar o dia, o horário e o local.'],
@@ -40,7 +41,7 @@ const fases = [
   { title: 'Sênior', text: 'mais conforto nos anos dourados' },
 ];
 
-const heroChecks = ['Vamos até a sua casa', 'Sem agulha, sem jejum, sem sedação', 'R$ 150 por pet, pago só na visita'];
+const heroChecks: ReactNode[] = ['Vamos até a sua casa', 'Sem agulha, sem jejum, sem sedação', <><TutorPrecoAncora />, pago só na visita</>];
 
 const incluso = ['Visita na sua casa (ou onde preferir)', 'Triagem de bem-estar completa', 'Relatório com nota geral e pontos de atenção', 'Plano de rotina', 'PDF para o veterinário'];
 
@@ -65,7 +66,7 @@ export default function TutorPage() {
             <span className="eyebrow">Para tutores em Bragança Paulista</span>
             <h1>Um check-up de bem-estar do seu pet, sem agulha, feito na sua casa.</h1>
             <p className="lead">A gente vai até você com um aparelho que lê, em poucos minutos, como está o corpo do seu cão ou gato. Você recebe um relatório fácil de ler, com a nota geral do seu pet e os pontos de atenção.</p>
-            <ul className="tt-hero-checks">{heroChecks.map((item) => <li key={item}><span className="ic"><Check size={15} /></span>{item}</li>)}</ul>
+            <ul className="tt-hero-checks">{heroChecks.map((item, index) => <li key={index}><span className="ic"><Check size={15} /></span>{item}</li>)}</ul>
             <div className="tt-hero-cta">
               <button className="btn btn-roxo" onClick={scrollToAgendar}>Quero agendar a visita</button>
               <p>Leva 1 minuto. Depois a gente te chama no WhatsApp para combinar o dia. Nada é cobrado agora.</p>
@@ -154,7 +155,9 @@ export default function TutorPage() {
         <section className="pad" id="oferta"><div className="wrap">
           <div className="sec-head center"><span className="eyebrow">Vagas limitadas</span><h2>São 50 vagas em Bragança Paulista neste ano</h2></div>
           <div className="preco-card card">
-            <div className="preco-valor">R$ 150 <span>por pet</span></div>
+            <div className="tt-preco-antigo">De R$ 350</div>
+            <div className="preco-valor tt-preco-novo"><small>por apenas</small> R$ 150</div>
+            <p className="tt-preco-nota">Preço de implantação em Bragança Paulista. Depois, a triagem com visita passa a custar R$ 350.</p>
             <ul>{incluso.map((item) => <li key={item}><span className="ic"><Check size={16} /></span>{item}</li>)}</ul>
             <p className="tt-oferta-pagamento">Pagamento só na visita, por Pix ou cartão.</p>
             <button className="btn btn-roxo" onClick={scrollToAgendar}>Quero agendar a visita</button>

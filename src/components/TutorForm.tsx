@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { getUtmParams } from '../lib/utm';
+import { TutorPrecoAncora } from './TutorSections';
 
 type Fields = { nome: string; whatsapp: string; nomePet: string; especie: string; bairro: string; local: string };
 type FieldErrors = Partial<Record<keyof Fields, string>>;
@@ -136,7 +137,7 @@ export function TutorForm() {
       {opcoes('local', 'Onde prefere fazer a triagem', locais, 'tt-pilulas tt-pilulas-col')}
       {error && <p role="alert" className="form-erro">{error}</p>}
       <button type="submit" className="btn btn-roxo tt-enviar" disabled={loading}>{loading ? 'Enviando...' : 'Quero agendar a visita'}</button>
-      <p className="tt-form-nota">Depois de enviar, a gente te chama no WhatsApp em até 24 horas para combinar o dia, o horário e o local. Nada é cobrado agora: você paga R$ 150 só na visita, por Pix ou cartão.</p>
+      <p className="tt-form-nota">Depois de enviar, a gente te chama no WhatsApp em até 24 horas para combinar o dia, o horário e o local. Nada é cobrado agora: você paga só na visita, <TutorPrecoAncora />, por Pix ou cartão.</p>
     </form>
   );
 }
