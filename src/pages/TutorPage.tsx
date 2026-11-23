@@ -74,7 +74,7 @@ export default function TutorPage() {
           </div>
           <div className="anim-entrada d1">
             <figure className="tt-foto tt-hero-foto">
-              <img src="/tutor-visita-casa.jpg" alt="Pessoa da equipe Utopet fazendo a triagem de um pet na casa do tutor" />
+              <img src="/tutor-visita-casa-v2.jpg" alt="Pessoa da equipe Utopet fazendo a triagem de um pet na casa do tutor" />
               <figcaption className="tt-legenda">Imagem ilustrativa</figcaption>
             </figure>
           </div>

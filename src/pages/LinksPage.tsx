@@ -7,7 +7,7 @@ import '../styles/links.css';
 type LinkItem = { slug: string; label: string; subtitle: string; url: string; thumb: string; destaque?: boolean; badge?: string };
 
 const links: LinkItem[] = [
-  { slug: 'tutor', label: 'Quero analisar meu pet', subtitle: 'Triagem em casa em Bragança · R$ 150', url: '/tutor?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/tutor-visita-casa.jpg', destaque: true, badge: '50 vagas' },
+  { slug: 'tutor', label: 'Quero analisar meu pet', subtitle: 'Triagem em casa em Bragança · R$ 150', url: '/tutor?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/tutor-visita-casa-v2.jpg', destaque: true, badge: '50 vagas' },
   { slug: 'veterinario', label: 'Tenha Utopet na sua clínica', subtitle: 'Para veterinários e pet shops', url: '/veterinario?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/utopet-aparelho-3d.jpg' },
   { slug: 'representantes', label: 'Seja representante', subtitle: 'Venda Utopet na sua região', url: '/representantes?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/representante-clinica.jpg' },
   { slug: 'site', label: 'Site Utopet', subtitle: 'Conheça a Utopet', url: '/?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/pet-golden.jpg' },
