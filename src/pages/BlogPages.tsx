@@ -9,7 +9,12 @@ const UTM = (campanha: string) => `?utm_source=blog&utm_medium=menu&utm_campaign
    `light` = versão para fundo escuro (rodapé). */
 function Logo({ light }: { light?: boolean }) {
   return (
-    <span className="ublog-logo-fallback" style={{ color: light ? '#fff' : 'var(--ub-tinta)' }}>utopet</span>
+    <span style={{ display: 'inline-flex', alignItems: 'flex-end', height: 32, color: light ? '#fff' : 'var(--ub-tinta)', fontFamily: "'Satoshi', 'DM Sans', sans-serif", fontSize: 32, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}>
+      <svg viewBox="0 0 62 100" aria-hidden="true" style={{ width: '0.62em', height: '1em', overflow: 'visible', marginRight: '0.02em' }}>
+        <path d="M8 6 v44 a23 23 0 0 0 46 0 v-44" fill="none" stroke="currentColor" strokeWidth="13" strokeLinecap="round" />
+        <path d="M16 84 a18 14 0 0 1 30 0" fill="none" stroke={light ? '#fff' : 'var(--lilas)'} strokeWidth="11" strokeLinecap="round" />
+      </svg>topet
+    </span>
   );
 }
 

@@ -5,6 +5,7 @@ import TutorPage from './pages/TutorPage';
 import RepresentantesPage from './pages/RepresentantesPage';
 import VeterinariansPage from './pages/VeterinariansPage';
 import LinksPage from './pages/LinksPage';
+import BlogRouter from './pages/BlogPages';
 
 // The initial PageView fires from index.html; redirects (REPLACE) are skipped so "/" -> "/veterinario" isn't counted twice.
 function PixelPageViews() {
@@ -30,6 +31,8 @@ function App() {
         <Route path="/representantes" element={<RepresentantesPage />} />
         <Route path="/en/veterinarians" element={<VeterinariansPage />} />
         <Route path="/links" element={<LinksPage />} />
+        <Route path="/blog" element={<BlogRouter />} />
+        <Route path="/blog/*" element={<BlogRouter />} />
         <Route path="*" element={<Navigate to="/veterinario" replace />} />
       </Routes>
     </BrowserRouter>

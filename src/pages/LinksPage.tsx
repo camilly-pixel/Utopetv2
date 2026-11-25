@@ -11,7 +11,7 @@ const links: LinkItem[] = [
   { slug: 'veterinario', label: 'Tenha Utopet na sua clínica', subtitle: 'Para veterinários e pet shops', url: '/veterinario?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/utopet-aparelho-3d.jpg' },
   { slug: 'representantes', label: 'Seja representante', subtitle: 'Venda Utopet na sua região', url: '/representantes?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/representante-clinica.jpg' },
   { slug: 'site', label: 'Site Utopet', subtitle: 'Conheça a Utopet', url: '/?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/pet-golden.jpg' },
-  { slug: 'blog', label: 'Blog', subtitle: 'Dicas para mais anos juntos', url: '', thumb: '/pet-gato-calico.jpg' },
+  { slug: 'blog', label: 'Blog', subtitle: 'Dicas para mais anos juntos', url: '/blog?utm_source=instagram&utm_medium=bio&utm_campaign=links', thumb: '/pet-gato-calico.jpg' },
 ];
 
 const FONT_ID = 'links-fraunces';
