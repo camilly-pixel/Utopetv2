@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
 import { Check, X, Plus, Menu } from 'lucide-react';
 import { LogoSvg } from './Icons';
+import { BlogFooterLinks } from './BlogFooterLinks';
 
 export type PageKind = 'veterinario' | 'tutor';
 
@@ -92,7 +93,7 @@ export function FinalCTA({ kind, onContact }: { kind: PageKind; onContact: () =>
 }
 
 export function Footer() {
-  return <footer className="rodape"><div className="wrap"><div className="rodape-card"><div className="rodape-topo"><a href="/veterinario" className="logo"><LogoSvg />topet</a><nav className="rodape-nav"><a href="/veterinario">Para clínicas</a><a href="/tutor">Para tutores</a><a href="mailto:contato@utopet.com.br">Contato</a></nav></div><p className="aviso-rodape">A triagem de bem-estar Utopet não é diagnóstico e não substitui a consulta, os exames ou a decisão do médico-veterinário.</p><p className="rodape-copy">© 2026 Utopet. Todos os direitos reservados.</p></div></div></footer>;
+  return <footer className="rodape"><div className="wrap"><div className="rodape-card"><div className="rodape-topo"><a href="/veterinario" className="logo"><LogoSvg />topet</a><nav className="rodape-nav"><a href="/veterinario">Para clínicas</a><a href="/tutor">Para tutores</a><a href="mailto:contato@utopet.com.br">Contato</a><a href="/blog">Blog</a></nav><BlogFooterLinks /></div><p className="aviso-rodape">A triagem de bem-estar Utopet não é diagnóstico e não substitui a consulta, os exames ou a decisão do médico-veterinário.</p><p className="rodape-copy">© 2026 Utopet. Todos os direitos reservados.</p></div></div></footer>;
 }
 
 export function CheckList({ items, className = '' }: { items: string[]; className?: string }) {

@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { ClipboardList, FileText, Menu, MessageCircle, PawPrint, Plus, Quote, X } from 'lucide-react';
 import { LogoSvg } from './Icons';
+import { BlogFooterLinks } from './BlogFooterLinks';
 
 const navLinks: Array<[string, string]> = [['Como funciona', 'como-funciona'], ['O que você recebe', 'recebe'], ['Relatório', 'relatorio'], ['O que lemos', 'o-que-lemos'], ['Quem somos', 'quem-somos'], ['Valores', 'oferta'], ['Dúvidas', 'duvidas']];
 
@@ -137,7 +138,7 @@ export function TutorFaq({ items }: { items: Array<[string, ReactNode]> }) {
 export function TutorFooter() {
   return (
     <footer className="rodape"><div className="wrap"><div className="rodape-card">
-      <div className="rodape-topo"><a href="/tutor" className="logo"><LogoSvg />topet</a><nav className="rodape-nav"><a href="/veterinario">Para clínicas</a><a href="/tutor">Para tutores</a><a href="mailto:contato@utopet.com.br">Contato</a></nav></div>
+      <div className="rodape-topo"><a href="/tutor" className="logo"><LogoSvg />topet</a><nav className="rodape-nav"><a href="/veterinario">Para clínicas</a><a href="/tutor">Para tutores</a><a href="mailto:contato@utopet.com.br">Contato</a><a href="/blog">Blog</a></nav><BlogFooterLinks /></div>
       <p className="aviso-rodape">A triagem de bem-estar Utopet não substitui a consulta, os exames ou a decisão do médico-veterinário.</p>
       <p className="rodape-copy">© 2026 Utopet. Todos os direitos reservados.</p>
     </div></div></footer>
